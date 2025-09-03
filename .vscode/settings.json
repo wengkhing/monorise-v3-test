@@ -1,0 +1,27 @@
+{
+  "search.exclude": {
+    "**/.sst": true
+  },
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.mjml": "html"
+  },
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "editor.formatOnSave": true,
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "TOKEN": "REPLACE_WITH_TOKEN"
+    },
+    "local": {
+      "API_BASE_URL": "https://6c5anfpt9d.execute-api.ap-southeast-2.amazonaws.com",
+      "X_API_KEY": "secret1"
+    },
+  }
+}

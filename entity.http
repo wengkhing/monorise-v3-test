@@ -1,0 +1,121 @@
+### Entity
+
+@entityType = practitioner
+
+
+### List all entities
+
+GET {{API_BASE_URL}}/core/entity/{{entityType}} HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+
+### Search for entity with query
+
+GET {{API_BASE_URL}}/core/entity/{{entityType}}
+ ?query=Duncan HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+
+### Create practitioner
+
+POST {{API_BASE_URL}}/core/entity/practitioner HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+{
+  "email": "arstarsasdt@mail.com",
+  "firstName": "Felix",
+  "lastName": "mail"
+}
+
+
+### Create organisation
+
+POST {{API_BASE_URL}}/core/entity/organisation HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+{
+  "name": "Gold Coast Hospital"
+}
+
+
+### Create clinic
+
+POST {{API_BASE_URL}}/core/entity/clinic HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+{
+  "name": "test"
+}
+
+
+### Update practitioner
+
+PATCH {{API_BASE_URL}}/core/entity/practitioner/01K23WDHWB7QH6CASE0XG1F6WJ HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+{
+  "firstName": "test updated",
+  "lastName": "mail"
+}
+
+
+### Get entity by entityId
+
+@entityId = 01K23W5G4VR9PSA4WQ4PDASRKZ
+
+GET {{API_BASE_URL}}/core/entity/{{entityType}}/{{entityId}} HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+
+### Get entity by unique field
+
+@uniqueField = email
+@uniqueFieldValue = test@mail.com
+
+GET {{API_BASE_URL}}/core/entity/{{entityType}}/unique/{{uniqueField}}/{{uniqueFieldValue}} HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+
+### Upsert entity
+
+PUT {{API_BASE_URL}}/core/entity/{{entityType}}/{{entityId}} HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+{
+  "posts": [
+    "01JZYT92WBXB0VEKTMPJ4XGM97",
+    "01JZYT9NKV5HNC1JHM839GTHNJ",
+    "01JZYTA6DTSFPBHCCXRN94GC85"
+  ]
+}
+
+
+### Update entity
+
+PATCH {{API_BASE_URL}}/core/entity/{{entityType}}/{{entityId}} HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}
+
+{
+  "practitioners": [
+    "01K23YRZ3Q6J3GJMRMNN66Q6B6",
+    "01K23WDHWB7QH6CASE0XG1F6WJ",
+    "01K23WD5N2FA1N6HZS8JPZGVQN"
+  ]
+}
+
+
+### Delete entity
+
+DELETE {{API_BASE_URL}}/core/entity/{{entityType}}/{{entityId}} HTTP/1.1
+Content-Type: application/json
+X-Api-Key: {{X_API_KEY}}

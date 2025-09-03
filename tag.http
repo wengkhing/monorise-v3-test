@@ -1,0 +1,41 @@
+### Generic list tag endpoint
+
+@tagName=status
+@group=pending
+@query=primary
+@start=2024-10-01
+@end=2024-10-31
+@limit=10
+
+GET {{API_BASE_URL}}/core/tag/{{tagName}}
+  ?group={{group}}
+  &query={{query}}
+  &start={{start}}
+  &end={{end}}
+  &limit={{limit}}
+content-type: application/json
+x-api-key: {{X_API_KEY}}
+
+### List all primary org
+
+GET {{API_BASE_URL}}/core/tag/organisation/billingStatus
+  ?group=full
+content-type: application/json
+x-api-key: {{X_API_KEY}}
+
+### List all org-learner-submission of org1 between date range
+
+GET {{API_BASE_URL}}/core/tag/learning-activity-submission/org-learner-submission
+  ?group=organization%23org1
+  &start=2024-10-01
+  &end=2024-11-31
+content-type: application/json
+x-api-key: {{X_API_KEY}}
+
+### List all org-learner-submission of org1 greater than or equal to date
+
+GET {{API_BASE_URL}}/core/tag/learning-activity-submission/org-learner-submission
+  ?group=organization%23org1
+  &start=2024-10-01
+content-type: application/json
+x-api-key: {{X_API_KEY}}

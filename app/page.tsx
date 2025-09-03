@@ -1,11 +1,17 @@
+'use client';
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import { createEntity, useEntities } from '@monorise/react';
+import { Entity } from "#/monorise/config";
+import Link from 'next/link';
 
 export default function Home() {
+  const { entities: practitioners, isLoading, error } = useEntities(Entity.PRACTITIONER);
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
+      <Image
           className={styles.logo}
           src="/next.svg"
           alt="Next.js logo"
@@ -13,19 +19,21 @@ export default function Home() {
           height={38}
           priority
         />
+        {
+          isLoading ? <div>is loading....</div> : null
+        }
         <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
+          {
+            practitioners?.map(practitioner => (
+            <li key={practitioner.entityId}>{practitioner.data.firstName} {practitioner.data.lastName}</li>
+            ))
+          }
         </ol>
 
         <div className={styles.ctas}>
-          <a
+          <Link
             className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href='/other'
           >
             <Image
               className={styles.logo}
@@ -34,8 +42,8 @@ export default function Home() {
               width={20}
               height={20}
             />
-            Deploy now
-          </a>
+            Go to other page
+          </Link>
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
